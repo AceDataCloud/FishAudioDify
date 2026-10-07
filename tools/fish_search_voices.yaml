@@ -8,49 +8,129 @@ description:
   human:
     en_US: Fish Search Voices via Ace Data Cloud.
     zh_Hans: 通过 Ace Data Cloud Fish 查询音色。
-  llm: Fish Search Voices via Ace Data Cloud.
+  llm: Fish Search Voices via Ace Data Cloud. For asynchronous results, preserve task_id
+    and use the task retrieval tool until completion. A successful submission is not
+    completed output.
 parameters:
-- name: query
-  label:
-    en_US: Voice title search
-    zh_Hans: 音色名称
-  type: string
-  required: false
-  form: llm
-  human_description:
-    en_US: Search public voices by title; leave empty to list public voices.
-    zh_Hans: 按标题搜索公开音色；留空返回公开音色列表。
-  llm_description: Search public voices by title; leave empty to list public voices.
 - name: limit
-  label:
-    en_US: Maximum voices
-    zh_Hans: 最多返回音色数
   type: number
   required: false
   form: form
+  label:
+    en_US: Maximum voices
+    zh_Hans: 最多返回音色数
   human_description:
     en_US: Return between 1 and 50 public voices.
     zh_Hans: 返回 1–50 个公开音色。
   llm_description: Return between 1 and 50 public voices.
   default: 10
+- name: page_number
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Page Number
+    zh_Hans: 页码
+  human_description:
+    en_US: Set page number for this operation.
+    zh_Hans: 设置页码。
+  llm_description: Set page number for this operation.
+  default: 1
+- name: query
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Voice title search
+    zh_Hans: 音色名称
+  human_description:
+    en_US: Search public voices by title; leave empty to list public voices.
+    zh_Hans: 按标题搜索公开音色；留空返回公开音色列表。
+  llm_description: Search public voices by title; leave empty to list public voices.
+- name: tag
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Tag
+    zh_Hans: 标签
+  human_description:
+    en_US: Set tag for this operation.
+    zh_Hans: 设置标签。
+  llm_description: Set tag for this operation.
+- name: self
+  type: boolean
+  required: false
+  form: form
+  label:
+    en_US: Self
+    zh_Hans: 仅我的音色
+  human_description:
+    en_US: Set self for this operation.
+    zh_Hans: 设置仅我的音色。
+  llm_description: Set self for this operation.
+- name: author_id
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Author Id
+    zh_Hans: 作者 ID
+  human_description:
+    en_US: Set author id for this operation.
+    zh_Hans: 设置作者 ID。
+  llm_description: Set author id for this operation.
+- name: language
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Language
+    zh_Hans: 语言
+  human_description:
+    en_US: Set language for this operation.
+    zh_Hans: 设置语言。
+  llm_description: Set language for this operation.
+- name: title_language
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Title Language
+    zh_Hans: 标题语言
+  human_description:
+    en_US: Set title language for this operation.
+    zh_Hans: 设置标题语言。
+  llm_description: Set title language for this operation.
+- name: sort_by
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Sort By
+    zh_Hans: 排序
+  human_description:
+    en_US: Set sort by for this operation.
+    zh_Hans: 设置排序。
+  llm_description: Set sort by for this operation.
 output_schema:
   type: object
   properties:
     status:
       type: string
+    success:
+      type: boolean
     task_id:
+      type: string
+    trace_id:
       type: string
     media_urls:
       type: array
       items:
         type: string
+    data: {}
     result:
       type: object
-    success:
-      type: boolean
-    trace_id:
-      type: string
-    data: {}
 extra:
   python:
     source: tools/fish_search_voices.py

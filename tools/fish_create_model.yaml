@@ -1,0 +1,125 @@
+identity:
+  name: fish_create_model
+  author: acedatacloud
+  label:
+    en_US: Fish Audio Create Model
+    zh_Hans: Fish Audio 创建语音模型
+description:
+  human:
+    en_US: Create Model through the Ace Data Cloud Fish Audio API.
+    zh_Hans: 通过 Ace Data Cloud Fish Audio API 执行 Create Model。
+  llm: Create Model through the Ace Data Cloud Fish Audio API. For asynchronous results,
+    preserve task_id and use the task retrieval tool until completion. A successful
+    submission is not completed output.
+parameters:
+- name: title
+  type: string
+  required: true
+  form: form
+  label:
+    en_US: Title
+    zh_Hans: 标题
+  human_description:
+    en_US: Set title for this operation.
+    zh_Hans: 语音模型的名称。
+  llm_description: Set title for this operation.
+- name: voices
+  type: string
+  required: true
+  form: form
+  label:
+    en_US: Voices
+    zh_Hans: 训练语音链接
+  human_description:
+    en_US: Set voices for this operation.
+    zh_Hans: 用于克隆的音频文件的 HTTP(S) URL，必须为单个 URL 字符串。本接口不支持 multipart/binary 文件上传。
+  llm_description: Set voices for this operation.
+- name: description
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Description
+    zh_Hans: 描述
+  human_description:
+    en_US: Set description for this operation.
+    zh_Hans: 语音模型的描述（可选）。
+  llm_description: Set description for this operation.
+- name: cover_image
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Cover Image
+    zh_Hans: 封面图片
+  human_description:
+    en_US: Set cover image for this operation.
+    zh_Hans: 语音模型封面图片的 HTTP(S) URL（可选）。
+  llm_description: Set cover image for this operation.
+- name: tags
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Tags
+    zh_Hans: 标签
+  human_description:
+    en_US: Set tags for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: 用于在公开库中检索的标签（可选）。 数组或对象请使用 JSON 格式。
+  llm_description: Set tags for this operation. Enter a JSON array or object where
+    applicable.
+- name: texts
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Texts
+    zh_Hans: 参考文本
+  human_description:
+    en_US: Set texts for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: 与音频样本对应的参考文本（可选）。 数组或对象请使用 JSON 格式。
+  llm_description: Set texts for this operation. Enter a JSON array or object where
+    applicable.
+- name: enhance_audio_quality
+  type: boolean
+  required: false
+  form: form
+  label:
+    en_US: Enhance Audio Quality
+    zh_Hans: 增强音质
+  human_description:
+    en_US: Set enhance audio quality for this operation.
+    zh_Hans: 若为 `true`，将在训练前对音频样本进行质量增强处理。
+  llm_description: Set enhance audio quality for this operation.
+- name: generate_sample
+  type: boolean
+  required: false
+  form: form
+  label:
+    en_US: Generate Sample
+    zh_Hans: 生成试听
+  human_description:
+    en_US: Set generate sample for this operation.
+    zh_Hans: 若为 `true`，将在训练完成后生成一段示例语音。
+  llm_description: Set generate sample for this operation.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/fish_create_model.py

@@ -1,0 +1,83 @@
+{
+  "mcp_revision": "f0eed10abf310824cb4c33d4944c63d3654ac95b",
+  "mapping": [
+    {
+      "mcp_tool": "fish_get_usage_guide",
+      "dify_tools": [],
+      "parameters": {},
+      "unresolved": [],
+      "note": "Model/action selectors and the API reference; informational guidance does not submit a request."
+    },
+    {
+      "mcp_tool": "fish_list_models",
+      "dify_tools": [],
+      "parameters": {
+        "page_size": "limit",
+        "title": "query"
+      },
+      "unresolved": [],
+      "note": "Model/action selectors and the API reference; informational guidance does not submit a request."
+    },
+    {
+      "mcp_tool": "fish_get_model",
+      "dify_tools": [],
+      "parameters": {},
+      "unresolved": [],
+      "note": "Model/action selectors and the API reference; informational guidance does not submit a request."
+    },
+    {
+      "mcp_tool": "fish_generate_audio",
+      "dify_tools": [
+        "fish_generate_audio"
+      ],
+      "parameters": {
+        "text": "text",
+        "reference_id": "reference_id",
+        "prompt": "text",
+        "voice_id": "reference_id",
+        "model": "model",
+        "format": "format",
+        "sample_rate": "sample_rate",
+        "mp3_bitrate": "mp3_bitrate",
+        "latency": "latency",
+        "chunk_length": "chunk_length",
+        "min_chunk_length": "min_chunk_length",
+        "temperature": "temperature",
+        "top_p": "top_p",
+        "repetition_penalty": "repetition_penalty",
+        "max_new_tokens": "max_new_tokens",
+        "normalize": "normalize",
+        "prosody": "prosody",
+        "references": "references",
+        "reference_audio_url": "references[].audio",
+        "reference_text": "references[].text",
+        "callback_url": "callback_url",
+        "async_": "Dify submit/poll output: async=true, stream=false"
+      },
+      "unresolved": [],
+      "note": ""
+    },
+    {
+      "mcp_tool": "fish_get_task",
+      "dify_tools": [
+        "fish_task_retrieve"
+      ],
+      "parameters": {
+        "task_id": "task_id"
+      },
+      "unresolved": [],
+      "note": "Set action=retrieve"
+    },
+    {
+      "mcp_tool": "fish_get_tasks_batch",
+      "dify_tools": [
+        "fish_tasks_retrieve_batch"
+      ],
+      "parameters": {
+        "task_ids": "ids"
+      },
+      "unresolved": [],
+      "note": "Set action=retrieve_batch"
+    }
+  ]
+}

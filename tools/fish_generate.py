@@ -9,17 +9,23 @@ from dify_plugin.entities.tool import ToolInvokeMessage
 from tools.acedata_client import AceDataFishClient
 
 
-class FishGenerateAudioTool(Tool):
+class FishGenerateTool(Tool):
     def _invoke(self, tool_parameters: dict[str, Any]) -> Generator[ToolInvokeMessage, None, None]:
-        client = AceDataFishClient(
-            bearer_token=self.runtime.credentials.get("acedata_bearer_token", "")
+        result = AceDataFishClient(self.runtime.credentials.get("acedata_bearer_token", "")).invoke(
+            "fish_generate_audio", tool_parameters
         )
-        result = client.execute("generate", tool_parameters)
         yield self.create_json_message(result)
-        for field in ["status", "task_id", "media_urls", "result"]:
-            yield self.create_variable_message(field, result[field])
-        yield self.create_variable_message("success", result["status"] == "succeeded")
-        yield self.create_variable_message("trace_id", result["result"].get("trace_id") or "")
-        yield self.create_variable_message("data", result["result"])
+        for name, value in result.items():
+            yield self.create_variable_message(name, value)
         for url in result["media_urls"]:
-            yield self.create_link_message(url)
+            if (
+                "audio" == "image"
+                or "audio" == "mixed"
+                and any(
+                    suffix in url.lower().split("?")[0]
+                    for suffix in [".png", ".jpg", ".jpeg", ".webp"]
+                )
+            ):
+                yield self.create_image_message(url)
+            else:
+                yield self.create_link_message(url)

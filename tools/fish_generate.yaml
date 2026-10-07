@@ -8,34 +8,243 @@ description:
   human:
     en_US: Generate text-to-speech audio with the Ace Data Cloud Fish Audio API.
     zh_Hans: 通过 Ace Data Cloud Fish Audio API 合成语音。
-  llm: Generate text-to-speech audio via the Ace Data Cloud Fish Audio API. Returns
-    a task ID; use the task retrieval tool to obtain completed media. Never repeat
-    a pending submission.
+  llm: Generate text-to-speech audio with the Ace Data Cloud Fish Audio API. For asynchronous
+    results, preserve task_id and use the task retrieval tool until completion. A
+    successful submission is not completed output.
 parameters:
 - name: text
-  label:
-    en_US: Text
-    zh_Hans: 文本
   type: string
   required: true
   form: llm
+  label:
+    en_US: Text
+    zh_Hans: 文本
   human_description:
     en_US: Text to synthesize as speech.
-    zh_Hans: 需要合成语音的文本。
+    zh_Hans: 待合成的文本内容。必填，须为非空字符串。
   llm_description: Text to synthesize as speech.
-- name: model
+- name: reference_id
+  type: string
+  required: false
+  form: form
   label:
-    en_US: Model
-    zh_Hans: 模型
+    en_US: Voice ID
+    zh_Hans: 音色 ID
+  human_description:
+    en_US: Optional public voice ID from Search voices; omit to use the service default.
+      Enter a JSON array or object where applicable.
+    zh_Hans: 已保存或公共声音的模型 ID；单说话人传字符串，多说话人可传字符串数组。不能与 `references` 同时使用。 数组或对象请使用 JSON
+      格式。
+  llm_description: Optional public voice ID from Search voices; omit to use the service
+    default. Enter a JSON array or object where applicable.
+- name: format
   type: select
   required: false
   form: form
+  label:
+    en_US: Format
+    zh_Hans: 输出格式
   human_description:
-    en_US: Select the model. Available models, access and pricing are shown in the
-      Ace Data Cloud console.
+    en_US: Output audio file format.
+    zh_Hans: 输出音频格式，默认为 `mp3`。可选 `mp3`、`wav`、`pcm`，其中 `wav` 与 `pcm` 均返回 WAV 容器。
+  llm_description: Output audio file format.
+  default: mp3
+  options:
+  - value: mp3
+    label:
+      en_US: mp3
+      zh_Hans: mp3
+  - value: wav
+    label:
+      en_US: wav
+      zh_Hans: wav
+  - value: pcm
+    label:
+      en_US: pcm
+      zh_Hans: pcm
+- name: sample_rate
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Sample Rate
+    zh_Hans: 采样率
+  human_description:
+    en_US: Set sample rate for this operation.
+    zh_Hans: 输出音频的采样率（如 16000、22050、44100）。
+  llm_description: Set sample rate for this operation.
+- name: mp3_bitrate
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Mp3 Bitrate
+    zh_Hans: MP3 比特率
+  human_description:
+    en_US: Set mp3 bitrate for this operation.
+    zh_Hans: '`format=mp3` 时的 MP3 比特率。'
+  llm_description: Set mp3 bitrate for this operation.
+  options:
+  - value: 64
+    label:
+      en_US: '64'
+      zh_Hans: '64'
+  - value: 128
+    label:
+      en_US: '128'
+      zh_Hans: '128'
+  - value: 192
+    label:
+      en_US: '192'
+      zh_Hans: '192'
+- name: latency
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Latency
+    zh_Hans: 延迟模式
+  human_description:
+    en_US: Set latency for this operation.
+    zh_Hans: 延迟模式。不接受空值，省略时默认为 `normal`。
+  llm_description: Set latency for this operation.
+  options:
+  - value: normal
+    label:
+      en_US: normal
+      zh_Hans: normal
+  - value: balanced
+    label:
+      en_US: balanced
+      zh_Hans: balanced
+- name: chunk_length
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Chunk Length
+    zh_Hans: 分块长度
+  human_description:
+    en_US: Set chunk length for this operation.
+    zh_Hans: 语音合成的分块长度。
+  llm_description: Set chunk length for this operation.
+- name: min_chunk_length
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Min Chunk Length
+    zh_Hans: 最小分块长度
+  human_description:
+    en_US: Set min chunk length for this operation.
+    zh_Hans: 最小分块长度。
+  llm_description: Set min chunk length for this operation.
+- name: temperature
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Temperature
+    zh_Hans: 温度
+  human_description:
+    en_US: Set temperature for this operation.
+    zh_Hans: 采样温度（0.0–1.0）。值越高输出越多样，值越低越稳定一致。
+  llm_description: Set temperature for this operation.
+- name: top_p
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Top P
+    zh_Hans: Top P
+  human_description:
+    en_US: Set top p for this operation.
+    zh_Hans: Top-p 核采样参数，控制输出多样性。
+  llm_description: Set top p for this operation.
+- name: repetition_penalty
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Repetition Penalty
+    zh_Hans: 重复惩罚
+  human_description:
+    en_US: Set repetition penalty for this operation.
+    zh_Hans: 生成过程中施加的重复惩罚系数。
+  llm_description: Set repetition penalty for this operation.
+- name: max_new_tokens
+  type: number
+  required: false
+  form: form
+  label:
+    en_US: Max New Tokens
+    zh_Hans: 最大生成 Token
+  human_description:
+    en_US: Set max new tokens for this operation.
+    zh_Hans: 最多生成的新 token 数量。
+  llm_description: Set max new tokens for this operation.
+- name: normalize
+  type: boolean
+  required: false
+  form: form
+  label:
+    en_US: Normalize
+    zh_Hans: 文本标准化
+  human_description:
+    en_US: Set normalize for this operation.
+    zh_Hans: 是否对输入文本进行文本规范化处理。
+  llm_description: Set normalize for this operation.
+- name: prosody
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Prosody
+    zh_Hans: 语速语调
+  human_description:
+    en_US: Set prosody for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: 韵律覆盖参数（如语速、音量等）。 数组或对象请使用 JSON 格式。
+  llm_description: Set prosody for this operation. Enter a JSON array or object where
+    applicable.
+- name: references
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: References
+    zh_Hans: 参考样本
+  human_description:
+    en_US: Set references for this operation. Enter a JSON array or object where applicable.
+    zh_Hans: 一次性即时声音克隆的参考样本。仅支持一个样本，须同时提供 HTTPS 音频 URL `audio` 和准确逐字稿 `text`；不能与 `reference_id`
+      同时使用。 数组或对象请使用 JSON 格式。
+  llm_description: Set references for this operation. Enter a JSON array or object
+    where applicable.
+- name: callback_url
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Callback Url
+    zh_Hans: 回调 URL
+  human_description:
+    en_US: Set callback url for this operation.
+    zh_Hans: '可选的回调 URL。指定后接口立即返回 `{"task_id": "5872ab00-3cf4-4040-a798-8510aaa16756",
+      "started_at": "2025-05-09T12:34:56.789Z"}`，待合成完成后将最终的 `{audio_url, ...}` 结果以
+      POST 方式推送至该 URL。'
+  llm_description: Set callback url for this operation.
+- name: model
+  type: select
+  required: false
+  form: form
+  label:
+    en_US: Model
+    zh_Hans: 模型
+  human_description:
+    en_US: Select a model currently supported by this API. Availability and pricing
+      depend on the chosen model.
     zh_Hans: 选择要调用的模型。模型权限和价格以 Ace Data Cloud 控制台为准。
-  llm_description: Select the model. Available models, access and pricing are shown
-    in the Ace Data Cloud console.
+  llm_description: Select a model currently supported by this API. Availability and
+    pricing depend on the chosen model.
   default: s2-pro
   options:
   - value: s1
@@ -50,57 +259,24 @@ parameters:
     label:
       en_US: s2.1-pro
       zh_Hans: s2.1-pro
-- name: reference_id
-  label:
-    en_US: Voice ID
-    zh_Hans: 音色 ID
-  type: string
-  required: false
-  form: llm
-  human_description:
-    en_US: Optional public voice ID from Search voices; omit to use the service default.
-    zh_Hans: 可选的公开音色 ID，可通过查询音色工具获取；留空使用服务默认音色。
-  llm_description: Optional public voice ID from Search voices; omit to use the service
-    default.
-- name: format
-  label:
-    en_US: Format
-    zh_Hans: 输出格式
-  type: select
-  required: false
-  form: form
-  human_description:
-    en_US: Output audio file format.
-    zh_Hans: 生成音频的文件格式。
-  llm_description: Output audio file format.
-  default: mp3
-  options:
-  - value: mp3
-    label:
-      en_US: mp3
-      zh_Hans: mp3
-  - value: wav
-    label:
-      en_US: wav
-      zh_Hans: wav
 output_schema:
   type: object
   properties:
     status:
       type: string
+    success:
+      type: boolean
     task_id:
+      type: string
+    trace_id:
       type: string
     media_urls:
       type: array
       items:
         type: string
+    data: {}
     result:
       type: object
-    success:
-      type: boolean
-    trace_id:
-      type: string
-    data: {}
 extra:
   python:
     source: tools/fish_generate.py
