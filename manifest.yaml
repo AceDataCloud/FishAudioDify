@@ -1,14 +1,19 @@
 version: 0.0.1
 type: plugin
 author: acedatacloud
-name: fish_audio
+name: fish
 label:
-  en_US: Fish Audio by Ace Data Cloud
-  zh_Hans: Fish Audio by Ace Data Cloud
+  en_US: Fish Audio
+  ja_JP: Fish Audio
+  zh_Hans: Fish 语音
+  pt_BR: Fish Audio
 description:
-  en_US: Synthesize Fish Audio speech and find reference voices with Ace Data Cloud.
-icon: icon.png
-icon_dark: icon.png
+  en_US: Synthesize speech audio with the Ace Data Cloud Fish Audio API.
+  ja_JP: Ace Data Cloud Fish Audio API で音声を合成します。
+  zh_Hans: 通过 Ace Data Cloud Fish Audio API 合成语音。
+  pt_BR: Sintetize áudio de fala com a API Ace Data Cloud Fish Audio.
+icon: icon.jpg
+icon_dark: icon.jpg
 resource:
   memory: 268435456
   permission:
@@ -16,7 +21,7 @@ resource:
       enabled: true
 plugins:
   tools:
-  - provider/fish_audio.yaml
+  - provider/fish.yaml
 meta:
   version: 0.0.1
   minimum_dify_version: 1.17.1

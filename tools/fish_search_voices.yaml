@@ -1,0 +1,56 @@
+identity:
+  name: fish_search_voices
+  author: acedatacloud
+  label:
+    en_US: Fish Search Voices
+    zh_Hans: Fish 查询音色
+description:
+  human:
+    en_US: Fish Search Voices via Ace Data Cloud.
+    zh_Hans: 通过 Ace Data Cloud Fish 查询音色。
+  llm: Fish Search Voices via Ace Data Cloud.
+parameters:
+- name: query
+  label:
+    en_US: Voice title search
+    zh_Hans: 音色名称
+  type: string
+  required: false
+  form: llm
+  human_description:
+    en_US: Search public voices by title; leave empty to list public voices.
+    zh_Hans: 按标题搜索公开音色；留空返回公开音色列表。
+  llm_description: Search public voices by title; leave empty to list public voices.
+- name: limit
+  label:
+    en_US: Maximum voices
+    zh_Hans: 最多返回音色数
+  type: number
+  required: false
+  form: form
+  human_description:
+    en_US: Return between 1 and 50 public voices.
+    zh_Hans: 返回 1–50 个公开音色。
+  llm_description: Return between 1 and 50 public voices.
+  default: 10
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    task_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    result:
+      type: object
+    success:
+      type: boolean
+    trace_id:
+      type: string
+    data: {}
+extra:
+  python:
+    source: tools/fish_search_voices.py

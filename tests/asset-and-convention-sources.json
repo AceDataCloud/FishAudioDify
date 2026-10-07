@@ -1,0 +1,32 @@
+{
+  "id": "fish",
+  "title": "Fish Audio",
+  "origin": {
+    "repository": "AceDataCloud/Dify",
+    "revision": "eaf0e68cd34cfe4cadece7a9ee34a98aac6b961e^",
+    "path": "plugins/fish/_assets/icon.jpg"
+  },
+  "icons": {
+    "icon.jpg": "9403f99d21bb11dad69a6ed74707187abc5a4787e9d4484ad5312bb9da1ea1b6"
+  },
+  "tools": [
+    {
+      "operation": "generate",
+      "file": "fish_generate",
+      "id": "fish_generate_audio",
+      "class": "FishGenerateAudioTool"
+    },
+    {
+      "operation": "voices",
+      "file": "fish_search_voices",
+      "id": "fish_search_voices",
+      "class": "FishSearchVoicesTool"
+    },
+    {
+      "operation": "task",
+      "file": "fish_task_retrieve",
+      "id": "fish_task_retrieve",
+      "class": "FishTaskRetrieveTool"
+    }
+  ]
+}

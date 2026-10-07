@@ -1,4 +1,22 @@
-# Fish Audio by Ace Data Cloud
+# Fish Audio
+
+**Author:** acedatacloud
+
+**Type:** tool provider plugin
+
+**API:** `https://api.acedata.cloud/fish/tts`
+
+## 工具
+
+| 工具 ID | 功能 | 参数 |
+|---|---|---|
+| `fish_generate_audio` | Fish 生成音频 | `text`, `model`, `reference_id`, `format` |
+| `fish_search_voices` | Fish 查询音色 | `query`, `limit` |
+| `fish_task_retrieve` | Fish Audio 查询任务 | `task_id`, `wait_seconds` |
+
+输出包含 `status`、`task_id`、`media_urls`、`result`，以及旧插件约定的 `success`、`trace_id`、`data`。`success` 仅在结果完成时为 true；失败会抛出工具错误。
+
+凭据字段为 `acedata_bearer_token`，粘贴 Token 时不需要 `Bearer ` 前缀。
 
 通过 Ace Data Cloud 使用文本转语音与公开参考音色查询。插件免费安装，API 使用需要自己的账户与额度。
 
@@ -26,3 +44,7 @@ Key、提示词、歌词/文本及所选参考媒体 URL 通过 HTTPS 发给 `ap
 源码：https://github.com/AceDataCloud/FishAudioDify
 
 支持：dev@acedata.cloud
+
+## 与旧 Dify 插件的对应
+
+本仓库沿用旧插件的服务图标、工具命名、Bearer Token 配置、中英文说明和代码组织方式。运行范围以上方工具表为准；这是独立的官方市场投稿，不是旧 19 插件发布链的恢复。

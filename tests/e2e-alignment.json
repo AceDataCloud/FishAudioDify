@@ -1,0 +1,28 @@
+{
+  "repo": "FishAudioDify",
+  "provider_id": "acedatacloud/fish/fish",
+  "icon_sha256": "9403f99d21bb11dad69a6ed74707187abc5a4787e9d4484ad5312bb9da1ea1b6",
+  "tool_ids": [
+    "fish_generate_audio",
+    "fish_search_voices",
+    "fish_task_retrieve"
+  ],
+  "localized_labels": true,
+  "credential_validation": "passed",
+  "workflow_results": [
+    {
+      "case": "fish-tts-result",
+      "task_id": "b24ec7c3-5007-4d10-94ec-10b0b48377d0",
+      "workflow_status": "succeeded",
+      "task_status": "succeeded",
+      "image_files": 0
+    }
+  ],
+  "new_paid_generations": 0,
+  "environment": "Dify CE 1.17.1 remote-debug + console API workflows",
+  "browser_ui_tested": false,
+  "marketplace_install_tested": false,
+  "prior_paid_case_payloads_unchanged": true,
+  "legacy_data_contains_audio_url": true,
+  "voice_search": "passed"
+}

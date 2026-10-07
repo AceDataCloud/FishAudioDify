@@ -1,0 +1,106 @@
+identity:
+  name: fish_generate_audio
+  author: acedatacloud
+  label:
+    en_US: Fish Generate Audio
+    zh_Hans: Fish 生成音频
+description:
+  human:
+    en_US: Generate text-to-speech audio with the Ace Data Cloud Fish Audio API.
+    zh_Hans: 通过 Ace Data Cloud Fish Audio API 合成语音。
+  llm: Generate text-to-speech audio via the Ace Data Cloud Fish Audio API. Returns
+    a task ID; use the task retrieval tool to obtain completed media. Never repeat
+    a pending submission.
+parameters:
+- name: text
+  label:
+    en_US: Text
+    zh_Hans: 文本
+  type: string
+  required: true
+  form: llm
+  human_description:
+    en_US: Text to synthesize as speech.
+    zh_Hans: 需要合成语音的文本。
+  llm_description: Text to synthesize as speech.
+- name: model
+  label:
+    en_US: Model
+    zh_Hans: 模型
+  type: select
+  required: false
+  form: form
+  human_description:
+    en_US: Select the model. Available models, access and pricing are shown in the
+      Ace Data Cloud console.
+    zh_Hans: 选择要调用的模型。模型权限和价格以 Ace Data Cloud 控制台为准。
+  llm_description: Select the model. Available models, access and pricing are shown
+    in the Ace Data Cloud console.
+  default: s2-pro
+  options:
+  - value: s1
+    label:
+      en_US: s1
+      zh_Hans: s1
+  - value: s2-pro
+    label:
+      en_US: s2-pro
+      zh_Hans: s2-pro
+  - value: s2.1-pro
+    label:
+      en_US: s2.1-pro
+      zh_Hans: s2.1-pro
+- name: reference_id
+  label:
+    en_US: Voice ID
+    zh_Hans: 音色 ID
+  type: string
+  required: false
+  form: llm
+  human_description:
+    en_US: Optional public voice ID from Search voices; omit to use the service default.
+    zh_Hans: 可选的公开音色 ID，可通过查询音色工具获取；留空使用服务默认音色。
+  llm_description: Optional public voice ID from Search voices; omit to use the service
+    default.
+- name: format
+  label:
+    en_US: Format
+    zh_Hans: 输出格式
+  type: select
+  required: false
+  form: form
+  human_description:
+    en_US: Output audio file format.
+    zh_Hans: 生成音频的文件格式。
+  llm_description: Output audio file format.
+  default: mp3
+  options:
+  - value: mp3
+    label:
+      en_US: mp3
+      zh_Hans: mp3
+  - value: wav
+    label:
+      en_US: wav
+      zh_Hans: wav
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    task_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    result:
+      type: object
+    success:
+      type: boolean
+    trace_id:
+      type: string
+    data: {}
+extra:
+  python:
+    source: tools/fish_generate.py
