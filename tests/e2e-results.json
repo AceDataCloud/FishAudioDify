@@ -1,0 +1,44 @@
+{
+  "tested_at": "2026-10-07",
+  "environment": "Dify CE 1.17.1 / plugin daemon 0.6.10-local, official remote-debug, console API workflows",
+  "signature_verification": true,
+  "browser_ui_tested": false,
+  "marketplace_install_tested": false,
+  "cases": [
+    {
+      "case": "fish-tts",
+      "operation": "generate",
+      "workflow_status": "succeeded",
+      "task_status": "pending",
+      "task_id": "b24ec7c3-5007-4d10-94ec-10b0b48377d0",
+      "media_urls": []
+    },
+    {
+      "case": "fish-tts-result",
+      "operation": "task",
+      "workflow_status": "succeeded",
+      "task_status": "succeeded",
+      "task_id": "b24ec7c3-5007-4d10-94ec-10b0b48377d0",
+      "media_urls": [
+        "https://platform2.cdn.acedata.cloud/fish/b24ec7c3-5007-4d10-94ec-10b0b48377d0.mp3"
+      ]
+    },
+    {
+      "case": "fish-voices",
+      "operation": "voices",
+      "workflow_status": "succeeded",
+      "task_status": "succeeded",
+      "task_id": "",
+      "media_urls": []
+    }
+  ],
+  "billing": [
+    {
+      "case": "fish-tts",
+      "task_id": "b24ec7c3-5007-4d10-94ec-10b0b48377d0",
+      "matched_records": 1,
+      "http_status": 200,
+      "deducted_credits": 0.005558111999999999
+    }
+  ]
+}

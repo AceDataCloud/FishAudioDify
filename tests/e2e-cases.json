@@ -1,0 +1,19 @@
+[
+  {
+    "label": "fish-tts",
+    "operation": "generate",
+    "parameters": {
+      "text": "Hello. This is the Ace Data Cloud Dify integration test.",
+      "model": "s2-pro",
+      "format": "mp3"
+    }
+  },
+  {
+    "label": "fish-voices",
+    "operation": "voices",
+    "parameters": {
+      "query": "",
+      "limit": 3
+    }
+  }
+]
