@@ -1,0 +1,90 @@
+identity:
+  name: fish_create_voice
+  author: acedatacloud
+  label:
+    en_US: Fish Audio Create Voice
+    zh_Hans: Fish Audio 创建音色
+description:
+  human:
+    en_US: Create Voice through the Ace Data Cloud Fish Audio API.
+    zh_Hans: 通过 Ace Data Cloud Fish Audio API 执行 Create Voice。
+  llm: Create Voice through the Ace Data Cloud Fish Audio API. For asynchronous results,
+    preserve task_id and use the task retrieval tool until completion. A successful
+    submission is not completed output.
+parameters:
+- name: voice_url
+  type: string
+  required: true
+  form: form
+  label:
+    en_US: Voice Url
+    zh_Hans: 参考语音链接
+  human_description:
+    en_US: Set voice url for this operation.
+    zh_Hans: 用于注册自定义音色的音频文件链接。
+  llm_description: Set voice url for this operation.
+- name: title
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Title
+    zh_Hans: 标题
+  human_description:
+    en_US: Set title for this operation.
+    zh_Hans: 自定义音色的标题信息。
+  llm_description: Set title for this operation.
+- name: description
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Description
+    zh_Hans: 描述
+  human_description:
+    en_US: Set description for this operation.
+    zh_Hans: 自定义音色的描述信息。
+  llm_description: Set description for this operation.
+- name: image_url
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Image Url
+    zh_Hans: 图片链接
+  human_description:
+    en_US: Set image url for this operation.
+    zh_Hans: 自定义音色的封面图片链接。
+  llm_description: Set image url for this operation.
+- name: callback_url
+  type: string
+  required: false
+  form: form
+  label:
+    en_US: Callback Url
+    zh_Hans: 回调 URL
+  human_description:
+    en_US: Set callback url for this operation.
+    zh_Hans: 音色创建完成后将被调用的回调 URL，该 URL 须可从公网访问。若指定此参数，接口将立即返回响应，结果就绪后会通过回调 URL 推送。
+  llm_description: Set callback url for this operation.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/fish_create_voice.py

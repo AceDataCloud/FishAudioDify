@@ -11,8 +11,8 @@ identity:
     ja_JP: Ace Data Cloud Fish Audio API で音声を合成します。
     zh_Hans: 通过 Ace Data Cloud Fish Audio API 合成语音。
     pt_BR: Sintetize áudio de fala com a API Ace Data Cloud Fish Audio.
-  icon: icon.jpg
-  icon_dark: icon.jpg
+  icon: icon.png
+  icon_dark: icon.png
   tags:
   - entertainment
 credentials_for_provider:
@@ -32,7 +32,11 @@ credentials_for_provider:
 tools:
 - tools/fish_generate.yaml
 - tools/fish_search_voices.yaml
+- tools/fish_get_voice.yaml
+- tools/fish_create_model.yaml
+- tools/fish_create_voice.yaml
 - tools/fish_task_retrieve.yaml
+- tools/fish_tasks_retrieve_batch.yaml
 extra:
   python:
     source: provider/fish.py

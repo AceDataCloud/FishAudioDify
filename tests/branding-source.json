@@ -1,0 +1,13 @@
+{
+  "source": "existing FishN8N 256px asset; same Fish brand as the live 32px service icon",
+  "upstream": {
+    "repo": "FishN8N",
+    "revision": "fe8bc851b311d10a92c7d4656df9f4dcabed9ae0",
+    "files": [
+      "nodes/Fish/icon.dark.png",
+      "nodes/Fish/icon.png"
+    ]
+  },
+  "live_reference_url": "https://cdn.acedata.cloud/e40fccc727.png",
+  "sha256": "48efe1dc469487d521b2fe755e9a63799a6df2752b35ac35977f1b3334e8b98c"
+}

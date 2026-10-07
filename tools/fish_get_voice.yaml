@@ -1,0 +1,46 @@
+identity:
+  name: fish_get_voice
+  author: acedatacloud
+  label:
+    en_US: Fish Audio Get Voice
+    zh_Hans: Fish Audio 查询音色
+description:
+  human:
+    en_US: Get Voice through the Ace Data Cloud Fish Audio API.
+    zh_Hans: 通过 Ace Data Cloud Fish Audio API 执行 Get Voice。
+  llm: Get Voice through the Ace Data Cloud Fish Audio API. For asynchronous results,
+    preserve task_id and use the task retrieval tool until completion. A successful
+    submission is not completed output.
+parameters:
+- name: id
+  type: string
+  required: true
+  form: form
+  label:
+    en_US: Id
+    zh_Hans: ID
+  human_description:
+    en_US: Set id for this operation.
+    zh_Hans: 设置ID。
+  llm_description: Set id for this operation.
+output_schema:
+  type: object
+  properties:
+    status:
+      type: string
+    success:
+      type: boolean
+    task_id:
+      type: string
+    trace_id:
+      type: string
+    media_urls:
+      type: array
+      items:
+        type: string
+    data: {}
+    result:
+      type: object
+extra:
+  python:
+    source: tools/fish_get_voice.py

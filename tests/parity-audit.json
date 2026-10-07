@@ -1,0 +1,120 @@
+{
+  "backend_revision": "fa94598267a82545fb1afed6ee26bafd6cbb9ca7",
+  "mcp_revision": "f0eed10abf310824cb4c33d4944c63d3654ac95b",
+  "tools": [
+    {
+      "tool": "fish_generate_audio",
+      "method": "POST",
+      "path": "/fish/tts",
+      "parameters": [
+        "text",
+        "reference_id",
+        "format",
+        "sample_rate",
+        "mp3_bitrate",
+        "latency",
+        "chunk_length",
+        "min_chunk_length",
+        "temperature",
+        "top_p",
+        "repetition_penalty",
+        "max_new_tokens",
+        "normalize",
+        "prosody",
+        "references",
+        "callback_url",
+        "model"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/77adcb84-d59f-5ef9-b8a0-8b35eb42a71d.json"
+    },
+    {
+      "tool": "fish_search_voices",
+      "method": "GET",
+      "path": "/fish/model",
+      "parameters": [
+        "limit",
+        "page_number",
+        "query",
+        "tag",
+        "self",
+        "author_id",
+        "language",
+        "title_language",
+        "sort_by"
+      ],
+      "aliases": {
+        "title": "query",
+        "page_size": "limit"
+      },
+      "schema_source": "openapi/0a2c983b-e20f-5926-a45f-07b61373617d.json"
+    },
+    {
+      "tool": "fish_get_voice",
+      "method": "GET",
+      "path": "/fish/model/{id}",
+      "parameters": [
+        "id"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/70f84537-7c48-57d3-9a21-b2a4f55e8f31.json"
+    },
+    {
+      "tool": "fish_create_model",
+      "method": "POST",
+      "path": "/fish/model",
+      "parameters": [
+        "title",
+        "voices",
+        "description",
+        "cover_image",
+        "tags",
+        "texts",
+        "enhance_audio_quality",
+        "generate_sample"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/82dcabe9-b1a3-541f-80f1-decb183b920c.json"
+    },
+    {
+      "tool": "fish_create_voice",
+      "method": "POST",
+      "path": "/fish/voices",
+      "parameters": [
+        "voice_url",
+        "title",
+        "description",
+        "image_url",
+        "callback_url"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/8bcf2d24-9c68-4a44-989e-4601c0601217.json"
+    },
+    {
+      "tool": "fish_task_retrieve",
+      "method": "POST",
+      "path": "/fish/tasks",
+      "parameters": [
+        "task_id",
+        "wait_seconds"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/fc541fac-a941-47fd-b6f7-48d6cb9da523.json"
+    },
+    {
+      "tool": "fish_tasks_retrieve_batch",
+      "method": "POST",
+      "path": "/fish/tasks",
+      "parameters": [
+        "ids"
+      ],
+      "aliases": {},
+      "schema_source": "openapi/fc541fac-a941-47fd-b6f7-48d6cb9da523.json"
+    }
+  ],
+  "mcp_scope": "fish",
+  "notes": [
+    "Informational MCP model/action lists are represented by tool dropdowns and README capability tables.",
+    "GPT Image covers image-generation/editing/task capabilities of the broader OpenAI MCP; chat is supplied by ModelProviderDify."
+  ]
+}

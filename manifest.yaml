@@ -12,8 +12,8 @@ description:
   ja_JP: Ace Data Cloud Fish Audio API で音声を合成します。
   zh_Hans: 通过 Ace Data Cloud Fish Audio API 合成语音。
   pt_BR: Sintetize áudio de fala com a API Ace Data Cloud Fish Audio.
-icon: icon.jpg
-icon_dark: icon.jpg
+icon: icon.png
+icon_dark: icon.png
 resource:
   memory: 268435456
   permission:
