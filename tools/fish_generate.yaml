@@ -32,15 +32,11 @@ parameters:
     zh_Hans: 音色 ID
   human_description:
     en_US: Optional public voice ID from Search voices; omit to use the service default.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable. Enter a JSON array or object where applicable.
+      Enter a JSON array or object where applicable.
     zh_Hans: 已保存或公共声音的模型 ID；单说话人传字符串，多说话人可传字符串数组。不能与 `references` 同时使用。 数组或对象请使用 JSON
       格式。
   llm_description: Optional public voice ID from Search voices; omit to use the service
-    default. Enter a JSON array or object where applicable. Enter a JSON array or
-    object where applicable. Enter a JSON array or object where applicable. Enter
-    a JSON array or object where applicable. Enter a JSON array or object where applicable.
+    default. Enter a JSON array or object where applicable.
 - name: format
   type: select
   required: false
@@ -207,14 +203,9 @@ parameters:
     zh_Hans: 语速语调
   human_description:
     en_US: Set prosody for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable.
     zh_Hans: 韵律覆盖参数（如语速、音量等）。 数组或对象请使用 JSON 格式。
   llm_description: Set prosody for this operation. Enter a JSON array or object where
-    applicable. Enter a JSON array or object where applicable. Enter a JSON array
-    or object where applicable. Enter a JSON array or object where applicable. Enter
-    a JSON array or object where applicable.
+    applicable.
 - name: references
   type: string
   required: false
@@ -224,15 +215,10 @@ parameters:
     zh_Hans: 参考样本
   human_description:
     en_US: Set references for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable.
     zh_Hans: 一次性即时声音克隆的参考样本。仅支持一个样本，须同时提供 HTTPS 音频 URL `audio` 和准确逐字稿 `text`；不能与 `reference_id`
       同时使用。 数组或对象请使用 JSON 格式。
   llm_description: Set references for this operation. Enter a JSON array or object
-    where applicable. Enter a JSON array or object where applicable. Enter a JSON
-    array or object where applicable. Enter a JSON array or object where applicable.
-    Enter a JSON array or object where applicable.
+    where applicable.
 - name: callback_url
   type: string
   required: false

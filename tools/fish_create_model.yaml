@@ -65,14 +65,9 @@ parameters:
     zh_Hans: 标签
   human_description:
     en_US: Set tags for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable.
     zh_Hans: 用于在公开库中检索的标签（可选）。 数组或对象请使用 JSON 格式。
   llm_description: Set tags for this operation. Enter a JSON array or object where
-    applicable. Enter a JSON array or object where applicable. Enter a JSON array
-    or object where applicable. Enter a JSON array or object where applicable. Enter
-    a JSON array or object where applicable.
+    applicable.
 - name: texts
   type: string
   required: false
@@ -82,14 +77,9 @@ parameters:
     zh_Hans: 参考文本
   human_description:
     en_US: Set texts for this operation. Enter a JSON array or object where applicable.
-      Enter a JSON array or object where applicable. Enter a JSON array or object
-      where applicable. Enter a JSON array or object where applicable. Enter a JSON
-      array or object where applicable.
     zh_Hans: 与音频样本对应的参考文本（可选）。 数组或对象请使用 JSON 格式。
   llm_description: Set texts for this operation. Enter a JSON array or object where
-    applicable. Enter a JSON array or object where applicable. Enter a JSON array
-    or object where applicable. Enter a JSON array or object where applicable. Enter
-    a JSON array or object where applicable.
+    applicable.
 - name: enhance_audio_quality
   type: boolean
   required: false
