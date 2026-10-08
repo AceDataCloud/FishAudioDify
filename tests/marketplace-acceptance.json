@@ -1,0 +1,31 @@
+{
+  "repo": "FishAudioDify",
+  "marketplace_url": "https://marketplace.dify.ai/plugin/acedatacloud/fish",
+  "identifier": "acedatacloud/fish:0.0.1@e1ffe40618032d92adda6d585306ad5ea6148933c406bae03c7b22cd644f5d99",
+  "installation_source": "marketplace",
+  "workflow_id": "69b3dbfa-2759-4a87-b09f-6b407ecd2301",
+  "workflow_status": "succeeded",
+  "service_status": "succeeded",
+  "case": "Fish Audio Marketplace Installed",
+  "media_urls": [
+    "https://platform2.cdn.acedata.cloud/fish/b24ec7c3-5007-4d10-94ec-10b0b48377d0.mp3"
+  ],
+  "outputs": {
+    "status": "succeeded",
+    "success": true,
+    "task_id": "",
+    "trace_id": ""
+  },
+  "icon_matches_source": true,
+  "paid_generation_reused": true,
+  "prior_media_decode_evidence": true,
+  "media_readback_status": "completed existing task output; generation not repeated",
+  "tested_at": "2026-10-08T01:26:57.567309+00:00",
+  "environment": "Dify CE 1.17.1 / plugin daemon 0.6.10-local",
+  "signature_verification_enabled": true,
+  "remote_debug_used": false,
+  "marketplace_install_tested": true,
+  "cloud_tested": false,
+  "screenshot": "evidence/marketplace-20261008.png",
+  "workflow": "evidence/marketplace-20261008-workflow.json"
+}
