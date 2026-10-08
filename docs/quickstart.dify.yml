@@ -6,12 +6,7 @@ app:
   mode: workflow
   name: Fish Audio Step-by-step Tutorial
   use_icon_as_answer_icon: false
-dependencies:
-- current_identifier: null
-  type: marketplace
-  value:
-    marketplace_plugin_unique_identifier: acedatacloud/fish:0.0.1@e1ffe40618032d92adda6d585306ad5ea6148933c406bae03c7b22cd644f5d99
-    version: null
+dependencies: []
 kind: app
 version: 0.7.0
 workflow:
@@ -86,7 +81,6 @@ workflow:
       zIndex: 0
     - data:
         desc: ''
-        plugin_unique_identifier: acedatacloud/fish:0.0.1@e1ffe40618032d92adda6d585306ad5ea6148933c406bae03c7b22cd644f5d99
         provider_id: acedatacloud/fish/fish
         provider_name: acedatacloud/fish/fish
         provider_type: builtin
@@ -127,7 +121,6 @@ workflow:
       zIndex: 0
     - data:
         desc: ''
-        plugin_unique_identifier: acedatacloud/fish:0.0.1@e1ffe40618032d92adda6d585306ad5ea6148933c406bae03c7b22cd644f5d99
         provider_id: acedatacloud/fish/fish
         provider_name: acedatacloud/fish/fish
         provider_type: builtin
