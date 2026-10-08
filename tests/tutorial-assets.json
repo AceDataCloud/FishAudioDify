@@ -1,0 +1,68 @@
+{
+  "captured": "2026-10-09",
+  "provenance": "Live Dify configuration screenshots and prior real successful results; no new paid generation. Sidebar/identity areas redacted; no success state modified.",
+  "key_source": {
+    "captured_at": "2026-10-08T17:15:13.782Z",
+    "source_url": "https://platform.acedata.cloud/console/applications",
+    "auth": "Existing authorized account, own identity",
+    "privacy": "Balance, application ID and complete/partial token are opaque-masked before screenshot capture. Dialog crops omit unrelated UI.",
+    "edits": "Crop + numbered callouts on live screenshot only; no UI data or success state fabricated.",
+    "capture_actions": "Read application page, open Manage Keys, open Create, fill example name, cancel; no credential created and no billable API call.",
+    "instructions": {
+      "1": "Copy the selected existing key. The screenshot redacts it. Paste only token in Dify, not the Bearer label.",
+      "2": "Manage Keys, then Create; use own key name and appropriate restrictions. Return to the list/application page to copy."
+    },
+    "files": [
+      {
+        "file": "create-api-key-en.png",
+        "sha256": "977c06780b36ca33f2fb3ba546e2594efe5895400e4cb58d842eb564c3bb09da",
+        "bytes": 25251
+      },
+      {
+        "file": "get-api-key-en.png",
+        "sha256": "b63787f2bd15af82fef9ab61c99e11c454355ac86e91f7f94559386b795069b7",
+        "bytes": 33708
+      }
+    ],
+    "published_screenshot_language": "English only in every locale, per explicit user instruction"
+  },
+  "files": [
+    {
+      "path": "_assets/tutorial/02-authorize.png",
+      "sha256": "3b7af2eed9de077f3561fc59f9b1ce4e9ea54a22612eccf3683841328180424c"
+    },
+    {
+      "path": "_assets/tutorial/03-workflow.png",
+      "sha256": "5032f5eff7a9ea1fc1e16231204dbf9d5aa644b1793dfe292c14c35efd5a66b9"
+    },
+    {
+      "path": "_assets/tutorial/03-configure.png",
+      "sha256": "a184384ae392bf46dca1347ddb375d291561c14cd071c6ee53843ccf78516354"
+    },
+    {
+      "path": "_assets/tutorial/create-api-key-en.png",
+      "sha256": "977c06780b36ca33f2fb3ba546e2594efe5895400e4cb58d842eb564c3bb09da"
+    },
+    {
+      "path": "_assets/tutorial/01-installed.png",
+      "sha256": "5082db4b19d001b94daea1df5cadd4f2dee0c866565aa9cef7cd01465f61c9bb"
+    },
+    {
+      "path": "_assets/tutorial/06-result.png",
+      "sha256": "cf0bb61ac7ed7f58d25e7c6b04b0b01401cd59fff0b0e570660320083a98dbcd"
+    },
+    {
+      "path": "_assets/tutorial/04-task-id.png",
+      "sha256": "36dc19fc168d71ff882dd6e80a34aa2f5b80b2c5b4cf786024f3e2a3726aad1b"
+    },
+    {
+      "path": "_assets/tutorial/05-output.png",
+      "sha256": "952e20414a98f18e82a03853b4e9e594fdf060a9b4713a40b76eedeeb07818a1"
+    },
+    {
+      "path": "_assets/tutorial/get-api-key-en.png",
+      "sha256": "b63787f2bd15af82fef9ab61c99e11c454355ac86e91f7f94559386b795069b7"
+    }
+  ],
+  "published_screenshot_language": "English only"
+}

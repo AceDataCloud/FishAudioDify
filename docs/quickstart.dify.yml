@@ -1,0 +1,222 @@
+app:
+  description: Real Dify integration verification with Ace Data Cloud
+  icon: null
+  icon_background: null
+  icon_type: emoji
+  mode: workflow
+  name: Fish Audio Step-by-step Tutorial
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: acedatacloud/fish:0.0.1@e1ffe40618032d92adda6d585306ad5ea6148933c406bae03c7b22cd644f5d99
+    version: null
+kind: app
+version: 0.7.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload: {}
+    sensitive_word_avoidance:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: start-generate
+      source: start
+      sourceHandle: source
+      target: generate
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: tool
+      id: generate-wait
+      source: generate
+      sourceHandle: source
+      target: wait
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: tool
+        targetType: end
+      id: wait-end
+      source: wait
+      sourceHandle: source
+      target: end
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 73
+      id: start
+      position:
+        x: 0
+        y: 100
+      positionAbsolute:
+        x: 0
+        y: 100
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        desc: ''
+        plugin_unique_identifier: acedatacloud/fish:0.0.1@e1ffe40618032d92adda6d585306ad5ea6148933c406bae03c7b22cd644f5d99
+        provider_id: acedatacloud/fish/fish
+        provider_name: acedatacloud/fish/fish
+        provider_type: builtin
+        retry_config:
+          max_retries: 0
+          retry_enabled: false
+          retry_interval: 1000
+        selected: false
+        title: Fish Audio
+        tool_configurations:
+          format:
+            type: constant
+            value: mp3
+          model:
+            type: constant
+            value: s2-pro
+        tool_label: Fish Generate Audio
+        tool_name: fish_generate_audio
+        tool_node_version: '2'
+        tool_parameters:
+          text:
+            type: constant
+            value: Hello. This is the Ace Data Cloud Dify integration test.
+        type: tool
+      height: 114
+      id: generate
+      position:
+        x: 300
+        y: 100
+      positionAbsolute:
+        x: 300
+        y: 100
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        desc: ''
+        plugin_unique_identifier: acedatacloud/fish:0.0.1@e1ffe40618032d92adda6d585306ad5ea6148933c406bae03c7b22cd644f5d99
+        provider_id: acedatacloud/fish/fish
+        provider_name: acedatacloud/fish/fish
+        provider_type: builtin
+        retry_config:
+          max_retries: 0
+          retry_enabled: false
+          retry_interval: 1000
+        selected: false
+        title: Retrieve completed task
+        tool_configurations:
+          task_id:
+            type: mixed
+            value: '{{#generate.task_id#}}'
+          wait_seconds:
+            type: constant
+            value: 240
+        tool_label: Fish Audio Retrieve Task
+        tool_name: fish_task_retrieve
+        tool_node_version: '2'
+        tool_parameters: {}
+        type: tool
+      height: 114
+      id: wait
+      position:
+        x: 600
+        y: 100
+      positionAbsolute:
+        x: 600
+        y: 100
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - wait
+          - status
+          variable: status
+        - value_selector:
+          - wait
+          - success
+          variable: success
+        - value_selector:
+          - wait
+          - task_id
+          variable: task_id
+        - value_selector:
+          - wait
+          - trace_id
+          variable: trace_id
+        - value_selector:
+          - wait
+          - media_urls
+          variable: media_urls
+        - value_selector:
+          - wait
+          - data
+          variable: data
+        - value_selector:
+          - wait
+          - result
+          variable: result
+        - value_selector:
+          - wait
+          - files
+          variable: files
+        selected: true
+        title: Output
+        type: end
+      height: 270
+      id: end
+      position:
+        x: 900
+        y: 100
+      positionAbsolute:
+        x: 900
+        y: 100
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    viewport:
+      x: 60
+      y: 160
+      zoom: 0.8
+  rag_pipeline_variables: []
