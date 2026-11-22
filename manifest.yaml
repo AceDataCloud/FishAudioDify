@@ -14,6 +14,8 @@ description:
   pt_BR: Sintetize áudio de fala com a API Ace Data Cloud Fish Audio.
 icon: icon.png
 icon_dark: icon.png
+tags:
+  - entertainment
 resource:
   memory: 268435456
   permission:
